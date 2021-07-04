@@ -19,9 +19,9 @@ import './icons' // icon
 import './permission' // permission control 导入并运行
 
 
+
 const { mockXHR } = require('../mock')
 mockXHR()
-
 
 
 Vue.config.productionTip = false

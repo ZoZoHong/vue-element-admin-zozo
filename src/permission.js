@@ -5,12 +5,12 @@ import NProgress from "nprogress";
 import 'nprogress/nprogress.css'
 import { getToken } from "@/utils/auth";
 import getPageTitle from "@/utils/get-page-title";
-import nProgress from "nprogress";
+
 
 // 配置进度条
 NProgress.configure({ showSpinner: false })
 // 白名单
-const whiteList = ['/login', 'auth-redirect'] //no redirect whitelist
+const whiteList = ['/login', '/auth-redirect'] //no redirect whitelist
 
 router.beforeEach(async (to, from, next) => {
     // 打开进度条
@@ -19,15 +19,19 @@ router.beforeEach(async (to, from, next) => {
     document.title = getPageTitle(to.meta.title)
     // 是否登录
     const hasToken = getToken()
+
     if (hasToken) {
         if (to.path === '/login') {
             // to 即将进入的页面,但是我已经登录了
+            console.log('我现在在login界面');
             next({ path: '/' })
             NProgress.done()
         } else {
             // 判断有没有权限
+            console.log('我竟然不在login界面');
             const hasRoles = store.getters.roles && store.getters.roles.length > 0
             if (hasRoles) {
+                console.log('那我的权限呢');
                 next()
             } else {
                 try {
@@ -36,8 +40,9 @@ router.beforeEach(async (to, from, next) => {
                     const { roles } = await store.dispatch('user/getInfo')
                     //生成可访问路由
                     const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+
                     // 添加可访问路由
-                    router.addRoute(accessRoutes)
+                    router.addRoutes(accessRoutes)
                     // hack method to ensure that addRoutes is complete
                     // set the replace: true, so the navigation will not leave a history record 不留下历史记录
                     next({ ...to, replace: true })

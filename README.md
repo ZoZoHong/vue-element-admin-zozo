@@ -50,6 +50,9 @@
 6. 点击登录没反应,promise不进行
    - 查看vuex,token = undefined , 服务器没有响应,没有设置mock.js和dev.
    - 配置vue.config.js
+   - 然后是api/user没写
+   - 最后是permission 写错
+   - 
 
 ## Project setup
 ```
