@@ -36,12 +36,20 @@
    - if !hasToken 重定向 看permission.js
    - 判断完呢, 设置导航守卫 router.beforeEach()
    - 以上就是规范流程
+   - 相关文件罗列 
+     - src/permission 看这里然后通过导入的模块找到其他相关模块
+     - router user.js index.js
+     - vuex user.js index.js getters.js
 2. 设置以上需要的路由和vuex
+   - 相关api 相关utils 相关token 相关vuex 相关网络请求axios 相关cookies
    - 
 3. 布局利用element框架
 4.  还可以通过登录的账号进行权限分析
-
-
+5. 遇到问题  error  'Router' is not defined  no-undef
+   - 名字写错了
+6. 点击登录没反应,promise不进行
+   - 查看vuex,token = undefined , 服务器没有响应,没有设置mock.js和dev.
+   - 配置vue.config.js
 
 ## Project setup
 ```

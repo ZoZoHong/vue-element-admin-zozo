@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+import Cookies from 'js-cookie'
+
 //样式
 import 'normalize.css/normalize.css'
 import Element from 'element-ui'
@@ -13,13 +15,19 @@ import store from './store'
 import router from './router'
 import less from 'less'
 
+import './icons' // icon
+import './permission' // permission control 导入并运行
+
+
+const { mockXHR } = require('../mock')
+mockXHR()
 
 
 
 Vue.config.productionTip = false
 Vue.use(less)
 Vue.use(Element, {
-  size: 'medium'
+  size: Cookies.get('size') || 'medium'
 })
 
 new Vue({
