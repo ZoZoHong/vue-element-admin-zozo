@@ -51,8 +51,21 @@
    - 查看vuex,token = undefined , 服务器没有响应,没有设置mock.js和dev.
    - 配置vue.config.js
    - 然后是api/user没写
-   - 最后是permission 写错
-   - 
+   - 最后是permission 写错 ,addRoute => addRoutes
+7. 登录篇 
+   - 入手方法,直接编写登录页面,实现功能 按照以上的操作实现。
+
+## 第三章 Layout 布局和侧边栏
+
+1. 侧边栏Sidebar
+2. Layout
+3. Cannot read property 'getters' of undefined
+   - 大概率是vuex modules有文件没写完
+4. 布局错乱
+   - 全局布局不知道什么时候删了
+   - 通过f12检查css,查不到相关css设置
+5. 先导入所有css,先把基础功能实现,再去写样式,提高效率
+6. 
 
 ## Project setup
 ```

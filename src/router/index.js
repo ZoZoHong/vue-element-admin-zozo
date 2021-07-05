@@ -33,7 +33,20 @@ export const constantRoutes = [
     path: '/auth-redirect',
     component: () => import('@/views/login/auth-redirecet'),
     hidden: true
-  }
+  },
+  {
+    path: '/',
+    component: Layout,
+    redirect: '/dashboard',
+    children: [
+      {
+        path: 'dashboard',
+        component: () => import('@/views/dashboard/index'),
+        name: 'Dashboard',
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
+  },
 ]
 
 export const asyncRoutes = [
@@ -78,7 +91,6 @@ export const asyncRoutes = [
       }
     ]
   },
-
   {
     path: '/icon',
     component: Layout,

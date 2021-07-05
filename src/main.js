@@ -7,13 +7,13 @@ import 'normalize.css/normalize.css'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // 全局样式
-import './styles/index.less'
+import '@/styles/index.scss' // global css
 
 
 import App from './App.vue'
 import store from './store'
 import router from './router'
-import less from 'less'
+
 
 import './icons' // icon
 import './permission' // permission control 导入并运行
@@ -24,8 +24,10 @@ const { mockXHR } = require('../mock')
 mockXHR()
 
 
+
+
 Vue.config.productionTip = false
-Vue.use(less)
+
 Vue.use(Element, {
   size: Cookies.get('size') || 'medium'
 })

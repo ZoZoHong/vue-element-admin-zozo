@@ -21,17 +21,16 @@ router.beforeEach(async (to, from, next) => {
     const hasToken = getToken()
 
     if (hasToken) {
+
         if (to.path === '/login') {
-            // to 即将进入的页面,但是我已经登录了
-            console.log('我现在在login界面');
+            // to 即将进入的页面,但是我已经登录了,就不需要登录
             next({ path: '/' })
             NProgress.done()
         } else {
             // 判断有没有权限
-            console.log('我竟然不在login界面');
             const hasRoles = store.getters.roles && store.getters.roles.length > 0
             if (hasRoles) {
-                console.log('那我的权限呢');
+
                 next()
             } else {
                 try {
@@ -51,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
                     await store.dispatch('user/resetToken')
                     Message.error(error || 'Has Error')
                     next(`/login?redirect=${to.path}`)
-                    nProgress.done()
+                    NProgress.done()
                 }
             }
         }
