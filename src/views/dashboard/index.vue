@@ -1,16 +1,19 @@
 <template>
-  <div class="dashboard-container">
-    <component :is="currentRole" />
+  <div class="dasshboard-container">
+    <admin-dashboard />
+    <!-- <component :is="currentRole" /> -->
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
-
+import adminDashboard from './admin'
 
 export default {
   name: 'Dashboard',
-
+  components: {
+    adminDashboard
+  },
   data () {
     return {
       currentRole: 'adminDashboard'
@@ -28,3 +31,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.dasshboard-container {
+  background-color: #f0f2f5;
+}
+</style>
